@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { collection, doc, getDocs } from 'firebase/firestore';
+import { arrayUnion, collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { auth, db } from '../firebase-config';
@@ -10,23 +10,64 @@ const OneBook = () => {
     const [book, setBook] = useState({})
 
     const booksCollectionRef = collection(db, "books")
+    const usersCollectionRef = collection(db, "users")
     const [user, setUser] = useState({});
 
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
+
     });
+
+
+
+    const requestBook = async () => {
+        // change available to No
+        // add requestedBy to book
+
+        const bookDoc = doc(db, "books", id)
+        const newFields = { available: "no", requestedBy: user.uid };
+        await updateDoc(bookDoc, newFields)
+
+        // add book to UserRequests
+        await updateUserData()
+
+
+        //     const newFields = { age: age + 1 };
+        //     await updateDoc(userDoc, newFields)
+
+        // // add to requestes of admin table
+    }
+
+    const updateUserData = async () => {
+        const data = await getDocs(usersCollectionRef)
+        const temp = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+        const currentUserData = temp.filter(e => e.uid === user.uid)[0]
+        const userDoc = doc(db, "users", currentUserData.id)
+
+        await updateDoc(userDoc, {
+            requestedBooks: arrayUnion(id)
+        })
+    }
+
+
+    const getBook = async () => {
+        const bookRef = db.collection("books").doc(id);
+        bookRef.get().then((doc) => {
+            if (doc.exists) {
+                setBook(doc.data());
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }
 
     useEffect(() => {
         setId(searchParams.get("id"))
-        const getBook = async () => {
-            const data = await getDocs(booksCollectionRef)
-            const book = data.docs.filter(e => e.id === id)[0]
-            const bookData = book.data()
-            setBook(bookData)
-        }
+
         getBook()
+        // getUserData()
         // console.log(bookDoc.data())
-    })
+    }, [id])
     return (
         <div>
             <div>Book details</div>
@@ -35,7 +76,11 @@ const OneBook = () => {
             <p>Genre- {book.genre}</p>
             <p>Available- {book.available}</p>
 
-            {user ? <button>Request</button> : <p>Please sign in to request</p>}
+            {!user ? <p>Please sign in to request</p> :
+                book.available === "yes" ? <button onClick={requestBook}>Request</button> :
+                    <button disabled>Unavailable</button>
+            }
+            <button onClick={updateUserData}>hi</button>
         </div>
     )
 }

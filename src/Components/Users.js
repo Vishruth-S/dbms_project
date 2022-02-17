@@ -12,7 +12,7 @@ function Users() {
 
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
-        console.log(currentUser)
+        // console.log(currentUser)
     });
     const createUser = async () => {
         await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) })
