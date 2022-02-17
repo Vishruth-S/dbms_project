@@ -36,13 +36,13 @@ function Books() {
 
     return (
         <div className="App">
-            <div>
+            {/* <div>
                 <input placeholder="Title" onChange={e => setTitle(e.target.value)} />
                 <input placeholder="Author" onChange={e => setAuthor(e.target.value)} />
                 <input placeholder="Genre" onChange={e => setGenre(e.target.value)} />
                 <input placeholder="Available" onChange={e => SetAvailable(e.target.value)} />
                 <button onClick={createBook}>Add book</button>
-            </div>
+            </div> */}
             <DisplayBooks allbooks={allbooks} />
         </div>
     );

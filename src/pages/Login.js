@@ -23,7 +23,7 @@ function Login() {
                 loginEmail,
                 loginPassword
             );
-            console.log(user);
+            // console.log(user);
         } catch (error) {
             console.log(error.message);
         }
@@ -45,6 +45,7 @@ function Login() {
                 />
                 <input
                     placeholder="Password..."
+                    type="password"
                     onChange={(event) => {
                         setLoginPassword(event.target.value);
                     }}
@@ -53,10 +54,10 @@ function Login() {
                 <button onClick={login}> Login</button>
             </div>
 
-            <h4> User Logged In: </h4>
-            {user?.email}
+            {/* <h4> User Logged In: </h4>
+            {user?.email} */}
 
-            <button onClick={logout}> Sign Out </button>
+            {/* <button onClick={logout}> Sign Out </button> */}
         </div>
     );
 }

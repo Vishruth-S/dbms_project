@@ -74,13 +74,12 @@ const OneBook = () => {
             <p>Title- {book.title}</p>
             <p>Author- {book.author}</p>
             <p>Genre- {book.genre}</p>
-            <p>Available- {book.available}</p>
+            {/* <p>Available- {book.available}</p> */}
 
             {!user ? <p>Please sign in to request</p> :
                 book.available === "yes" ? <button onClick={requestBook}>Request</button> :
                     <button disabled>Unavailable</button>
             }
-            <button onClick={updateUserData}>hi</button>
         </div>
     )
 }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 const DisplayBooks = (props) => {
-    console.log(props)
     const [allBooks, SetAllbooks] = useState([])
     useEffect(() => {
         SetAllbooks(props.allbooks)
