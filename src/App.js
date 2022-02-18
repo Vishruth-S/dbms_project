@@ -13,6 +13,8 @@ import RequestedBooks from './pages/RequestedBooks';
 import RequireAuth from './Components/RequireAuth';
 import ViewRequests from './pages/admin/ViewRequests';
 import RegisterUser from './pages/Register';
+import Profile from './pages/Profile';
+import IssuedBooks from './pages/issuedBooks';
 
 function App() {
   return (
@@ -23,8 +25,11 @@ function App() {
         <Route path="/register" element={<RegisterUser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/requestedbooks" element={<RequireAuth><RequestedBooks /></RequireAuth>} />
         <Route path="/books/:id" element={<OneBook />} />
+        <Route path="/requestedbooks" element={<RequireAuth><RequestedBooks /></RequireAuth>} />
+        <Route path="/issuedbooks" element={<RequireAuth><IssuedBooks /></RequireAuth>} />
+        <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+
 
         <Route path="/viewrequests" element={<ViewRequests />} />
       </Routes >

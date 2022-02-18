@@ -2,7 +2,7 @@ import React from 'react'
 import { auth, db } from "../firebase-config";
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
+import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc, setDoc } from "firebase/firestore"
 
 const Register = () => {
     const [uid, setUid] = useState('')
@@ -18,7 +18,7 @@ const Register = () => {
         setEmail(currentUser.email)
     });
     const createUser = async () => {
-        await addDoc(usersCollectionRef, { uid: uid, name: name, email: email, phone: phone })
+        await setDoc(doc(db, "users", uid), { uid: uid, name: name, email: email, phone: phone })
     }
     return (
         <div>

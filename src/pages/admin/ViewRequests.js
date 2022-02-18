@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
+import { arrayRemove, arrayUnion, collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase-config'
 
@@ -21,8 +21,14 @@ const ViewRequests = () => {
         let temp = requestedBy
         const newFields = { issuedTo: temp, requestedBy: "" };
         await updateDoc(bookDoc, newFields)
+        const userDoc = doc(db, "users", temp)
+        await updateDoc(userDoc, {
+            requestedBooks: arrayRemove(bookId),
+            issuedBooks: arrayUnion(bookId)
+        })
         console.log("issued")
     }
+
     return (
         <div>
             {allbooks.map(book => (
@@ -34,7 +40,8 @@ const ViewRequests = () => {
 
                     </div>
                     : null
-            ))}
+            ))
+            }
         </div>
 
     )
