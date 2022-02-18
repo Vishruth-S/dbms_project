@@ -9,7 +9,7 @@ function RequireAuth({ children }) {
         setUser(currentUser);
     });
 
-    return user.uid ? children : <Navigate to="/login" replace />;
+    return user ? children : <Navigate to="/login" replace />;
 }
 
 export default RequireAuth
