@@ -10,6 +10,7 @@ import OneBook from './pages/OneBook';
 import Login from './pages/Login';
 import Navbar from './Components/Navbar';
 import RequestedBooks from './pages/RequestedBooks';
+import RequireAuth from './Components/RequireAuth';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/users" element={<Users />} />
-        <Route path="/requestedbooks" element={<RequestedBooks />} />
+        <Route path="/requestedbooks" element={<RequireAuth><RequestedBooks /></RequireAuth>} />
         <Route path="/books/:id" element={<OneBook />} />
       </Routes >
     </Router>
