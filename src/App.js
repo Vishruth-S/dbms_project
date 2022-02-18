@@ -14,7 +14,7 @@ import RequireAuth from './Components/RequireAuth';
 import ViewRequests from './pages/admin/ViewRequests';
 import RegisterUser from './pages/Register';
 import Profile from './pages/Profile';
-import IssuedBooks from './pages/issuedBooks';
+import ViewIssuedBooks from './pages/admin/ViewIssuedBooks';
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/books/:id" element={<OneBook />} />
         <Route path="/requestedbooks" element={<RequireAuth><RequestedBooks /></RequireAuth>} />
-        <Route path="/issuedbooks" element={<RequireAuth><IssuedBooks /></RequireAuth>} />
+        <Route path="/issuedbooks" element={<RequireAuth><ViewIssuedBooks /></RequireAuth>} />
         <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
 
 

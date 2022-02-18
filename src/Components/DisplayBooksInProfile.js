@@ -23,7 +23,7 @@ const DisplayBooksInProfile = ({ bookIds }) => {
                 }))
             )
         ))
-        filterBooks()
+        // filterBooks()
     }, [allbooks.length]);
     return (
         <div>
