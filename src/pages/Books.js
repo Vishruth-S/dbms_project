@@ -9,10 +9,10 @@ function Books() {
     const [genre, setGenre] = useState('')
     const [available, SetAvailable] = useState(false)
     const [allbooks, SetAllbooks] = useState([])
-    const usersCollectionRef = collection(db, "books")
+    const booksCollectionRef = collection(db, "books")
 
     const createBook = async () => {
-        await addDoc(usersCollectionRef, { title: title, author: author, genre: genre, available: available })
+        await addDoc(booksCollectionRef, { title: title, author: author, genre: genre, available: available })
     }
 
     // const updateUser = async (id) => {
@@ -28,7 +28,7 @@ function Books() {
 
     useEffect(() => {
         const getBooks = async () => {
-            const data = await getDocs(usersCollectionRef)
+            const data = await getDocs(booksCollectionRef)
             SetAllbooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         }
         getBooks()

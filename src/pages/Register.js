@@ -8,7 +8,7 @@ import {
 import { auth } from "../firebase-config";
 import Register from "../Components/Register";
 
-function Regiser() {
+function RegisterUser() {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
 
@@ -65,4 +65,4 @@ function Regiser() {
     );
 }
 
-export default Register;
+export default RegisterUser;
