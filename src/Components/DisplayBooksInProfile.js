@@ -1,28 +1,36 @@
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase-config';
 
 const DisplayBooksInProfile = ({ bookIds }) => {
+    const [allbooks, setAllbooks] = useState([])
     const [books, setBooks] = useState([])
-    const getBooks = () => {
-        bookIds?.map(id => {
-            const bookRef = db.collection("books").doc(id);
-            bookRef.get().then((doc) => {
-                if (doc.exists) {
-                    let t = [...books, doc.data()]
-                    setBooks(t)
-                }
-            }).catch((error) => {
-                console.log("Error getting document:", error);
-            });
-        })
+
+    const booksCollectionRef = collection(db, "books")
+    // buggy
+    const filterBooks = () => {
+        setBooks(allbooks.filter(el => (
+            el.id in bookIds
+        )))
+        console.log(books)
     }
     useEffect(() => {
-        getBooks()
-    }, [])
+        db.collection('books').onSnapshot(snapshot => (
+            setAllbooks(
+                snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    data: doc.data()
+                }))
+            )
+        ))
+        filterBooks()
+    }, [allbooks.length]);
     return (
         <div>
-            {books.map(book => (
-                <h3>Title - {book.title}</h3>
+            {allbooks.map(book => (
+                <div>
+                    {bookIds.includes(book.id) === true ? <p>{book.data.title}</p> : null}
+                </div>
             ))}
         </div>
     )
