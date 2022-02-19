@@ -29,17 +29,17 @@ div.formC>.title{
 		text-align: center;
 		margin: 3rem auto;
 }
-div.formC>form{
+.form{
   display: block;
 }
-div.formC>form>input, div.formC>form>button{
+.form input, .form button{
 		outline: none;
 		border: none;
 		display: block;
 		font-size: 1rem;
 		margin: 2rem auto;	
 }
-div.formC>form>input{
+.form input{
 		width: 100%;
 		height: 3rem;
 		padding: 0 1rem;
@@ -48,13 +48,13 @@ div.formC>form>input{
 		background: var(--bodyB);
 		box-shadow: inset 3px 3px 7px rgb(187 187 187 / 48%), inset -6px -6px 7px #ffffff;
 }
-div.formC>form>input:focus {
+.form input:focus {
 		box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
-div.formC>form>input::placeholder{
+.form>input::placeholder{
 		font-size: 80%;
 }
-div.formC>form>button{
+.form>button{
 		cursor: pointer;
 		padding: .6rem 1.4rem;
 		width: 100%;
@@ -64,7 +64,7 @@ div.formC>form>button{
 		background: var(--themeC);
 		box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
-div.formC>form>button:hover{
+.form>button:hover{
 		opacity: 90%;
 }
 div.bottom{

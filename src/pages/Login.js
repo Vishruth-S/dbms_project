@@ -36,7 +36,7 @@ function Login() {
 
     return (
         <>
-        {/* <div>
+         {/* <div>
             <div>
                 <h3> Login </h3>
                 <input
@@ -56,26 +56,25 @@ function Login() {
                 <button onClick={login}> Login</button>
             </div>
 
-            {/* <h4> User Logged In: </h4>
-            {user?.email} */}
+             {/* <h4> User Logged In: </h4>
+            {user?.email} 
 
-            {/* <button onClick={logout}> Sign Out </button> */}
-        {/* </div> */} 
+             <button onClick={logout}> Sign Out </button>  */}
+         {/* </div>   */}
 
       
   <div class="formC">
   		<h2 class="title">
   				Welcome!
    	</h2>
-   	<form>
-       <input
+       <div className="form">
+   	 <input
                     placeholder="Email..."
                     onChange={(event) => {
                         setLoginEmail(event.target.value);
                     }}
                 />
-   			
-            <input
+                <input
                     placeholder="Password..."
                     type="password"
                     onChange={(event) => {
@@ -83,8 +82,9 @@ function Login() {
                     }}
                 />
 
-   			<button  onClick={login}>Login</button>
-   	</form>
+                <button onClick={login}> Login</button>
+                </div>
+                
    	<div class="bottom">
 						<span>
 							Don't have an account?
@@ -93,7 +93,7 @@ function Login() {
 							Sign Up
 						</a>
 					</div>
-  </div>
+  </div> 
 
 </>
     );
