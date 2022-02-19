@@ -3,6 +3,7 @@ import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import DisplayBooksInProfile from '../Components/DisplayBooksInProfile';
+import DisplayFinesInProfile from '../Components/DisplayFinesInProfile';
 import { auth, db } from '../firebase-config';
 
 const Profile = () => {
@@ -42,6 +43,13 @@ const Profile = () => {
                     <DisplayBooksInProfile bookIds={userData.issuedBooks} />
                 </div>
                 : <div><button disabled>View Issued books</button> <span>You have not been issued any books yet</span></div>
+            }
+            {userData.fines && userData.fines.length > 0 ?
+                <div>
+                    <h3>Fines</h3>
+                    <DisplayFinesInProfile fineIds={userData.fines} />
+                </div>
+                : <div><button disabled>View Fines</button> <span>You don't have any fines</span></div>
             }
         </div>
     )

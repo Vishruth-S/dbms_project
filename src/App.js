@@ -19,6 +19,7 @@ import Register_admin from './pages/admin/Register_admin'
 import AddBook from './pages/admin/AddBook'
 
 import AdminAuth from './Components/AdminAuth'
+import Fines from './pages/admin/Fines';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/viewrequests" element={<AdminAuth><ViewRequests /></AdminAuth>} />
         <Route path="/users" element={<AdminAuth><Users /></AdminAuth>} />
         <Route path="/addbooks" element={<AdminAuth><AddBook /></AdminAuth>} />
+        <Route path="/fines" element={<AdminAuth><Fines /></AdminAuth>} />
 
       </Routes >
     </Router>

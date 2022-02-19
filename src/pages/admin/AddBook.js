@@ -75,7 +75,7 @@ function AddBook() {
     const getSelectedValue = (e) => {
         // console.log(e.target.value)
         setShelf(e.target.value)
-        console.log(shelf)
+        // console.log(shelf)
     }
 
     return (
