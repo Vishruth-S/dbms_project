@@ -12,7 +12,7 @@ const Register = () => {
     const [phone, setPhone] = useState('')
     const navigate = useNavigate()
 
-    const usersCollectionRef = collection(db, "users")
+    // const usersCollectionRef = collection(db, "users")
     const [user, setUser] = useState({})
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
@@ -21,21 +21,21 @@ const Register = () => {
     });
     const createUser = async () => {
         await setDoc(doc(db, "users", uid), { uid: uid, name: name, email: email, phone: phone })
-        .then(navigate('/books'))
+            .then(navigate('/books'))
     }
-        
+
     return (
         <div>
             <div>Register</div>
             <div className='reg'>
                 <form>
-                <input placeholder='name' onChange={e => setName(e.target.value)} />
-                <input value={email} disabled />
-                <input placeholder='phone' onChange={e => setPhone(e.target.value)} />
-            </form>
+                    <input placeholder='name' onChange={e => setName(e.target.value)} />
+                    <input value={email} disabled />
+                    <input placeholder='phone' onChange={e => setPhone(e.target.value)} />
+                </form>
             </div>
             <div className='sbutton'>
-            <button onClick={createUser}>Save</button>
+                <button onClick={createUser}>Save</button>
             </div>
         </div>
     )
