@@ -37,14 +37,14 @@ const Profile = () => {
                 </div>
                 : <div><button disabled>View Requested books</button> <span>You have not requested any books yet</span></div>
             }
-            {userData.issuedBooks && userData.issuedBooks.length > 0 ?
+            {userData?.issuedBooks && userData.issuedBooks.length > 0 ?
                 <div>
                     <h3>Issued books</h3>
                     <DisplayBooksInProfile bookIds={userData.issuedBooks} />
                 </div>
                 : <div><button disabled>View Issued books</button> <span>You have not been issued any books yet</span></div>
             }
-            {userData.fines && userData.fines.length > 0 ?
+            {userData?.fines && userData.fines.length > 0 ?
                 <div>
                     <h3>Fines</h3>
                     <DisplayFinesInProfile fineIds={userData.fines} />

@@ -58,7 +58,6 @@ function RegisterUser() {
 
                 <button onClick={register}> Create User</button>
             </div>
-            {user ? <Register /> : null}
 
 
             {/* <h4> User Logged In: </h4> */}
