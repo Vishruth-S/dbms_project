@@ -26,7 +26,8 @@ const ViewRequests = () => {
             requestedBooks: arrayRemove(bookId),
             issuedBooks: arrayUnion(bookId)
         })
-        console.log("issued")
+        alert("Book issued successfully")
+        window.location.reload();
     }
 
     return (

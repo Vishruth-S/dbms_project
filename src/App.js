@@ -9,7 +9,6 @@ import Users from './pages/admin/Users';
 import OneBook from './pages/OneBook';
 import Login from './pages/Login';
 import Navbar from './Components/Navbar';
-import RequestedBooks from './pages/RequestedBooks';
 import RequireAuth from './Components/RequireAuth';
 import ViewRequests from './pages/admin/ViewRequests';
 import RegisterUser from './pages/Register';
@@ -19,21 +18,33 @@ import Register_admin from './pages/admin/Register_admin'
 import AddBook from './pages/admin/AddBook'
 
 import AdminAuth from './Components/AdminAuth'
+import Fines from './pages/admin/Fines';
+import Landing from './pages/Landing';
+import AdminLanding from './pages/admin/AdminLanding';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/books" element={<Books />} />
         <Route path="/register" element={<RegisterUser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/books/:id" element={<OneBook />} />
 
         {/* {authed routes} */}
-        <Route path="/requestedbooks" element={<RequireAuth><RequestedBooks /></RequireAuth>} />
         <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
-        <Route path="/viewrequests" element={<ViewRequests />} />
+
+        {/* admin routes */}
+        <Route path="/adminlogin" element={<Login />} />
+        <Route path="/adminregister" element={<Register_admin />} />
+        <Route path="/adminlanding" element={<AdminAuth><AdminLanding /></AdminAuth>} />
+        <Route path="/issuedbooks" element={<AdminAuth><ViewIssuedBooks /></AdminAuth>} />
+        <Route path="/viewrequests" element={<AdminAuth><ViewRequests /></AdminAuth>} />
+        <Route path="/users" element={<AdminAuth><Users /></AdminAuth>} />
+        <Route path="/addbooks" element={<AdminAuth><AddBook /></AdminAuth>} />
+        <Route path="/fines" element={<AdminAuth><Fines /></AdminAuth>} />
       </Routes >
     </Router>
   );

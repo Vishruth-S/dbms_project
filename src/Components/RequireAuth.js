@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { auth } from "../firebase-config";
 
 function RequireAuth({ children }) {
@@ -9,7 +9,11 @@ function RequireAuth({ children }) {
         setUser(currentUser);
     });
 
-    return user ? children : <Navigate to="/login" replace />;
+    return user ? children :
+        <div>
+            <h3>Please Login to access this page</h3>
+            <Link to="/login">Login</Link>
+        </div>;
 }
 
 export default RequireAuth

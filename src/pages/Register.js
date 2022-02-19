@@ -62,6 +62,7 @@ function RegisterUser() {
 
 
             {/* <h4> User Logged In: </h4> */}
+            {user ? <Register type="users" /> : null}
             {/* {user ? <button onClick={logout}> Sign Out </button> : null} */}
         </div>
 

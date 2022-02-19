@@ -4,13 +4,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc, setDoc } from "firebase/firestore"
 import './Reg.css'
-import { useNavigate } from 'react-router-dom';
-const Register = () => {
+import { Navigate, useNavigate } from 'react-router-dom';
+const Register = ({ type }) => {
     const [uid, setUid] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const navigate = useNavigate()
+    const [redirect, setRedirect] = useState(false)
 
     // const usersCollectionRef = collection(db, "users")
     const [user, setUser] = useState({})
@@ -20,24 +20,30 @@ const Register = () => {
         setEmail(currentUser.email)
     });
     const createUser = async () => {
-        await setDoc(doc(db, "users", uid), { uid: uid, name: name, email: email, phone: phone })
-            .then(navigate('/books'))
+        await setDoc(doc(db, String(type), uid), { uid: uid, name: name, email: email, phone: phone })
+        alert("Account created successfully")
+        setRedirect(true)
     }
 
     return (
         <div>
-            <div>Register</div>
-            <div className='reg'>
-                <form>
-                    <input placeholder='name' onChange={e => setName(e.target.value)} />
-                    <input value={email} disabled />
-                    <input placeholder='phone' onChange={e => setPhone(e.target.value)} />
-                </form>
-            </div>
-            <div className='sbutton'>
-                <button onClick={createUser}>Save</button>
-            </div>
-        </div>
+            {!redirect
+                ?
+                <div>
+                    <div className='reg'>
+                        <form>
+                            <input placeholder='name' onChange={e => setName(e.target.value)} />
+                            <input value={email} disabled />
+                            <input placeholder='phone' onChange={e => setPhone(e.target.value)} />
+                        </form>
+                    </div>
+                    <div className='sbutton'>
+                        <button onClick={createUser}>Save</button>
+                    </div>
+                </div>
+                : <Navigate to="/" />
+            }
+        </div >
     )
 }
 
