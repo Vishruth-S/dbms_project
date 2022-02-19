@@ -16,40 +16,51 @@ const Navbar = () => {
     const [admin, setAdmin] = useState({})
 
     const getAdmins = async () => {
-        const currentUser = user.uid ? doc(db, "admins", user.uid) : null
-        const currentUserData = await getDoc(currentUser);
-        console.log(currentUserData.data())
-        setAdmin(currentUserData.data().uid)
+        const currentUser = user?.uid ? doc(db, "admins", user.uid) : null
+        if (user && user.uid) {
+            const currentUserData = await getDoc(currentUser);
+            // console.log(currentUserData.data())
+            setAdmin(currentUserData.data()?.uid)
+        }
     }
     useEffect(() => {
         getAdmins()
     }, [user])
 
     return (
-        <div>
-            <div>
-                <span>
-                    {user && user.uid === admin
+        <div className='navbar'>
+            <span className='nav'>
+                <span className='nav-links'>
+                    {user && user?.uid === admin
                         ? <Link to="/adminlanding">Go to Admin Dashboard</Link>
-                        : <Link to="/">HOME</Link>}
-                    <Link to="/books">View all books</Link>
+                        : <Link to="/">HOME</Link>
+                    }
                 </span>
-                {user ?
-                    <span>
-                        <span>Logged in as {user.email}</span>
-                        <span>
-                            <button onClick={logout}>
-                                Log out
-                            </button>
-                        </span>
-                        <span>
-                            {user && user.uid === admin ? null :
-                                <Link to="/profile">View User Dashboard</Link>
-                            }
-                        </span>
+                <span className='nav-links' >
+                    <Link to="/books">Books</Link>
+                </span>
+            </span>
+            {/* <span className='nav'>
+                <Link to="/">HOME</Link>
+                <Link to="/books">Books</Link>
+            </span> */}
+
+            {user ?
+                <span className='nav'>
+                    {/* <span>Logged in as {user.email}</span> */}
+                    <span className='nav-links'>
+                        {user && user.uid === admin ? null :
+                            <Link to="/profile">View User Dashboard</Link>
+                        }
                     </span>
-                    : <a href='/login'>Login</a>}
-            </div>
+                    <span className='nav-links'>
+                        <button onClick={logout}>
+                            Log out
+                        </button>
+                    </span>
+                </span>
+                : <a href='/login'>Login</a>}
+            {/* <span></span> */}
         </div>
     )
 }

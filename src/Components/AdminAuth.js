@@ -9,10 +9,12 @@ function AdminAuth({ children }) {
     const [admin, setAdmin] = useState({})
 
     const getAdmins = async () => {
-        const currentUser = user.uid ? doc(db, "admins", user.uid) : null
-        const currentUserData = await getDoc(currentUser);
-        // console.log(currentUserData.data())
-        setAdmin(currentUserData.data().uid)
+        if (user.uid) {
+            const currentUser = user.uid ? doc(db, "admins", user.uid) : null
+            const currentUserData = await getDoc(currentUser);
+            // console.log(currentUserData.data())
+            setAdmin(currentUserData.data().uid)
+        }
     }
     useEffect(() => {
         getAdmins()

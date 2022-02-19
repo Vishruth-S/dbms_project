@@ -11,9 +11,11 @@ const Profile = () => {
     const [userData, setUserData] = useState({})
 
     const getData = async () => {
-        const currentUser = user.uid ? doc(db, "users", user.uid) : null
-        const currentUserData = await getDoc(currentUser);
-        setUserData(currentUserData.data())
+        if (user && user.uid) {
+            const currentUser = user.uid ? doc(db, "users", user.uid) : null
+            const currentUserData = await getDoc(currentUser);
+            setUserData(currentUserData.data())
+        }
     }
 
     onAuthStateChanged(auth, (currentUser) => {
@@ -30,7 +32,7 @@ const Profile = () => {
             <h4>Library id: {userData.uid}</h4>
             <p>Registered email: {userData.email}</p>
             <p>Phone: {userData.phone}</p>
-            {userData.requestedBooks && userData.requestedBooks.length > 0 ?
+            {userData?.requestedBooks && userData.requestedBooks.length > 0 ?
                 <div>
                     <h3>Requested books</h3>
                     <DisplayBooksInProfile bookIds={userData.requestedBooks} />
