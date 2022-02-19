@@ -15,7 +15,6 @@ const OneBook = () => {
 
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
-
     });
 
 

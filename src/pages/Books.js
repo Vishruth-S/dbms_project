@@ -4,7 +4,7 @@ import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase
 import DisplayBooks from '../Components/DisplayBooks';
 import './Book.css'
 
-function Books() {
+const Books = () => {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [genre, setGenre] = useState('')
@@ -31,16 +31,16 @@ function Books() {
     }
 
     useEffect(() => {
-        // const getBooks = async () => {
-        //     const data = await getDocs(booksCollectionRef)
-        //     SetAllbooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        // }
-        // getBooks()
-        (async () => {
+        const getBooks = async () => {
             const data = await getDocs(booksCollectionRef)
             SetAllbooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        })()
-    }, [createBook])
+        }
+        getBooks()
+        // async () => {
+        //     const data = await getDocs(booksCollectionRef)
+        //     SetAllbooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        // })
+    }, [])
 
     return (
         <div className="">
