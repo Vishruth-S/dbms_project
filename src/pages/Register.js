@@ -7,12 +7,14 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase-config";
 import Register from "../Components/Register";
-
+import { useNavigate } from "react-router-dom";
+import './Register.css'
 function RegisterUser() {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
 
     const [user, setUser] = useState({});
+    const navigate = useNavigate();
 
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
@@ -37,8 +39,8 @@ function RegisterUser() {
     };
 
     return (
-        <div>
-            <div>
+        <div className="formC">
+            <div className="form_container">
                 <h3> Register User </h3>
                 <input
                     placeholder="Email..."
@@ -56,12 +58,13 @@ function RegisterUser() {
 
                 <button onClick={register}> Create User</button>
             </div>
+            {user ? <Register /> : null}
 
 
             {/* <h4> User Logged In: </h4> */}
-            {user ? <Register /> : null}
             {/* {user ? <button onClick={logout}> Sign Out </button> : null} */}
         </div>
+
     );
 }
 

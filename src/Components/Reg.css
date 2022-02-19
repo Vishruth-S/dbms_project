@@ -1,0 +1,33 @@
+.reg form{
+    display: block;
+}
+.reg input, .sbutton button{
+    outline: none;
+    border: none;
+    display: block;
+    font-size: 1rem;
+    margin: 2rem auto;	
+}
+.reg input{
+    width: 100%;
+    height: 2rem;
+    padding: 0 1rem;
+    color: var(--font-color);
+    border-radius: 2rem;
+    background: var(--bodyB);
+    box-shadow: inset 3px 3px 7px rgb(187 187 187 / 48%), inset -6px -6px 7px #ffffff;
+}
+
+.sbutton button{
+    cursor: pointer;
+    padding: .6rem 1.4rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 2rem;
+    color: white;
+    background: var(--themeC);
+    box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+}
+.sbutton button:hover{
+    opacity: 90%;
+}

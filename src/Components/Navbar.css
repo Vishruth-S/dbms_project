@@ -1,0 +1,28 @@
+.navbar{
+ 
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 10vh;
+    padding-top: 10px;
+    /* border-bottom: 1px solid black; */
+    box-shadow:  5px 5px 10px #c1c1c1,
+             -5px -5px 10px #ffffff;
+}
+
+.nav{
+    padding: 10px;
+}
+
+.button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
