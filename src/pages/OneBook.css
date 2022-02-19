@@ -1,0 +1,29 @@
+.onebook{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    width: max-content;
+    /* height: 50vh; */
+    align-items: center;
+    margin: 2rem auto;
+    padding: 30px 20px;
+}
+
+.onebook h1{
+    margin-bottom: 15px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.onebook p{
+    /* margin-top: 10px; */
+    /* font-size: large; */
+}
+.onebook span{
+    font-size: larger;
+    font-weight: bold;
+}
+.onebook button{
+    margin-top: 5px;
+    padding: 5px 10px;
+}
