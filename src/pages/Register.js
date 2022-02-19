@@ -15,7 +15,7 @@ function RegisterUser() {
 
     const [user, setUser] = useState({});
     const navigate = useNavigate();
-
+    const [mounted, setMounted] = useState(true);
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
     });
@@ -58,11 +58,10 @@ function RegisterUser() {
 
                 <button onClick={register}> Create User</button>
             </div>
-            {user ? <Register /> : null}
 
 
             {/* <h4> User Logged In: </h4> */}
-            {/* {user ? <Register type="users" /> : null} */}
+            {user ? mounted && <Register type="users" /> : null}
             {/* {user ? <button onClick={logout}> Sign Out </button> : null} */}
         </div>
 

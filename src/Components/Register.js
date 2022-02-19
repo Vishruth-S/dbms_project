@@ -25,12 +25,32 @@ const Register = ({ type }) => {
         setRedirect(true)
     }
 
+    const [state, setState] = useState("loading (4 sec)...");
+    useEffect(() => {
+        let isMounted = true;
+        fetchData();
+        return () => {
+            isMounted = false;
+        };
+
+        // simulate some Web API fetching
+        function fetchData() {
+            setTimeout(() => {
+                // drop "if (isMounted)" to trigger error again 
+                // (take IDE, doesn't work with stack snippet)
+                if (isMounted) setState("data fetched")
+                else;
+            }, 4000);
+        }
+    }, []);
+
     return (
         <div>
             {!redirect
                 ?
                 <div>
                     <div className='reg'>
+                        <h4>Add your details</h4>
                         <form>
                             <input placeholder='name' onChange={e => setName(e.target.value)} />
                             <input value={email} disabled />
