@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
-import { auth, db } from "../firebase-config";
+import { auth, db } from "../../firebase-config";
 import { onAuthStateChanged } from 'firebase/auth';
 
 function Users() {
@@ -39,11 +39,11 @@ function Users() {
 
     return (
         <div className="App">
-            <div>
+            {/* <div>
                 <input placeholder="Name" onChange={e => setNewName(e.target.value)} />
                 <input type="number" placeholder='number' onChange={e => setNewAge(e.target.value)} />
                 <button onClick={createUser}>Create user</button>
-            </div>
+            </div> */}
             {users.map(user => {
                 return (
                     <div>

@@ -5,10 +5,10 @@ import {
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
-import { auth } from "../firebase-config";
-import Register from "../Components/Register";
+import { auth } from "../../firebase-config";
+import Register from "../../Components/Register";
 
-function RegisterUser() {
+function RegisterAdmin() {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
 
@@ -39,7 +39,7 @@ function RegisterUser() {
     return (
         <div>
             <div>
-                <h3> Register User </h3>
+                <h3> Register Admin </h3>
                 <input
                     placeholder="Email..."
                     onChange={(event) => {
@@ -54,15 +54,15 @@ function RegisterUser() {
                     }}
                 />
 
-                <button onClick={register}> Create User</button>
+                <button onClick={register}> Create Admin</button>
             </div>
 
 
             {/* <h4> User Logged In: </h4> */}
-            {user ? <Register type="users" /> : null}
+            {user ? <Register type="admins" /> : null}
             {/* {user ? <button onClick={logout}> Sign Out </button> : null} */}
         </div>
     );
 }
 
-export default RegisterUser;
+export default RegisterAdmin;

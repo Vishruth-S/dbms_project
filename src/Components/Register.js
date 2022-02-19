@@ -4,13 +4,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc, setDoc } from "firebase/firestore"
 
-const Register = () => {
+const Register = ({ type }) => {
     const [uid, setUid] = useState('')
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
 
-    const usersCollectionRef = collection(db, "users")
+    // const usersCollectionRef = collection(db, "users")
     const [user, setUser] = useState({})
     onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
@@ -18,7 +18,7 @@ const Register = () => {
         setEmail(currentUser.email)
     });
     const createUser = async () => {
-        await setDoc(doc(db, "users", uid), { uid: uid, name: name, email: email, phone: phone })
+        await setDoc(doc(db, String(type), uid), { uid: uid, name: name, email: email, phone: phone })
     }
     return (
         <div>
