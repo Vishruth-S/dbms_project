@@ -1,0 +1,41 @@
+.addbook{
+    margin: 10px auto 0 auto;
+    
+}
+
+.add{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 3rem;
+    border: 1px solid black;
+    width: 50vw;
+    
+    /* margin-left: auto;
+    margin-right: auto; */
+    padding: 2rem 1rem;
+    border-radius: 10px;
+
+
+}
+.add input ,label, select{
+    margin: 0.5rem 1rem;
+    height: 1.5rem;
+   
+}
+
+.add label{
+    margin-bottom: 0;
+    height: min-content;
+}
+.add button {
+    background: black;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+

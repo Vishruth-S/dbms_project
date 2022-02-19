@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import Register from "../../Components/Register";
+import './AdminRegister.css';
 
 function RegisterAdmin() {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -37,8 +38,8 @@ function RegisterAdmin() {
     };
 
     return (
-        <div>
-            <div>
+        <div className="formC">
+            <div className="form_container">
                 <h3> Register Admin </h3>
                 <input
                     placeholder="Email..."
