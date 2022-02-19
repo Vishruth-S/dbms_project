@@ -1,5 +1,6 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { auth } from '../firebase-config';
 
 const Navbar = () => {
@@ -12,7 +13,22 @@ const Navbar = () => {
     };
     return (
         <div>
-            {user ? <span><span>Logged in as {user.email}</span><span><button onClick={logout}>Log out</button></span></span> : <a href='/login'>Login</a>}
+            <span>
+                <Link to="/books">View all books</Link>
+            </span>
+            {user ?
+                <span>
+                    <span>Logged in as {user.email}</span>
+                    <span>
+                        <button onClick={logout}>
+                            Log out
+                        </button>
+                    </span>
+                    <span>
+                        <Link to="/profile">View User Dashboard</Link>
+                    </span>
+                </span>
+                : <a href='/login'>Login</a>}
             {/* <span></span> */}
         </div>
     )

@@ -31,7 +31,8 @@ const OneBook = () => {
         // add book to UserRequests
         await updateUserData()
 
-
+        alert("request placed successfully")
+        window.location.reload();
         //     const newFields = { age: age + 1 };
         //     await updateDoc(userDoc, newFields)
 
