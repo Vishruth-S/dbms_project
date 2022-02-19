@@ -6,6 +6,7 @@ import DisplayBooksInProfile from '../Components/DisplayBooksInProfile';
 import DisplayFinesInProfile from '../Components/DisplayFinesInProfile';
 import { auth, db } from '../firebase-config';
 import './Profile.css';
+import profile from './Pic.jpg';
 const Profile = () => {
     const [user, setUser] = useState({});
     const [userData, setUserData] = useState({})
@@ -25,7 +26,8 @@ const Profile = () => {
     }, [user])
     return (
         <div className='profile'>
-            <h2>My Profile</h2>
+            <img src={profile}></img>
+            {/* <h2>My Profile</h2> */}
             <h3>Name: {userData.name}</h3>
             <h4>Library id: {userData.uid}</h4>
             <p>Registered email: {userData.email}</p>
