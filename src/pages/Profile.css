@@ -1,6 +1,6 @@
 .profile{
     display: flex;
-    border: 1px dashed black;
+    border: 1px solid black;
     margin: 10px auto;
     padding: 10px 20px;
     flex-direction: column;
@@ -23,4 +23,19 @@
     font-style: normal;
     font-weight: bold;
     font-size: large;
+}
+.table{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 2px solid black;
+    
+}
+.trow{
+    align-items: center;
+    border: 2px solid black;
+    width: 33.3vw;
+}
+.trow h3{
+    border-bottom: 1px solid black;
 }

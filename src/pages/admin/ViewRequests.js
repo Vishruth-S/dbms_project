@@ -1,6 +1,7 @@
 import { arrayRemove, arrayUnion, collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase-config'
+import './BookIssue.css'
 
 
 const ViewRequests = () => {
@@ -31,10 +32,10 @@ const ViewRequests = () => {
     }
 
     return (
-        <div>
+        <div className='cardflex'>
             {allbooks.map(book => (
                 book.requestedBy && book.requestedBy.length > 0 ?
-                    <div>
+                    <div className='card'>
                         <p>Titel - {book.title}</p>
                         <p>Requested by - {book.requestedBy}</p>
                         {book.requestedBy.length && book.requestedBy.length > 0 ? <button onClick={() => issueBook(book.id, book.requestedBy)}>Issue book</button> : <button disabled>Already Issued</button>}

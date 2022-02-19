@@ -83,7 +83,7 @@ function AddBook() {
     }
 
     return (
-        <div className="addbook">
+        <div className="addb">
             <h2>Add book</h2>
             <div className='add'>
                 
