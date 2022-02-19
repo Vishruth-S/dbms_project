@@ -1,0 +1,72 @@
+.books{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.card{
+    width:20vw;
+    padding: 10px;
+    /* padding: 10px 2rem 10px 2rem; */
+    margin:2rem;
+    
+    border-radius: 19px;
+background: linear-gradient(145deg, #f0f0f0, #cacaca);
+box-shadow:  7px 7px 14px #b8b8b8,
+             -7px -7px 14px #ffffff;
+}
+
+.card p{
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: left;
+    margin-top: 1rem;
+    
+}
+.card span{
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgb(139, 127, 127);
+}
+
+.viewButton{
+    display: flex;
+    border: 1px solid black;
+    width: 12vw;
+    text-align: center;
+    justify-content: center;
+    border-radius: 19px;
+padding: 0.4rem 0;
+font-weight: bold;
+
+letter-spacing: 3px;
+}
+
+
+
+.viewButton:hover{
+background: black;
+color: white;
+}
+.viewButton:hover a{
+    color: white;
+}
+ a{
+     display: flex;
+     justify-content: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 1rem;
+    
+}
+@media only screen and (max-width: 456px) {
+    .books{
+        flex-direction: column;
+    }
+.card{
+    width: auto;
+}
+
+}

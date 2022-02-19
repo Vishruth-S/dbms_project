@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { db } from '../firebase-config'
 import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
 import DisplayBooks from '../Components/DisplayBooks';
+import './Book.css'
 
 function Books() {
     const [title, setTitle] = useState('')
@@ -13,6 +14,9 @@ function Books() {
 
     const createBook = async () => {
         await addDoc(booksCollectionRef, { title: title, author: author, genre: genre, available: available })
+        .then(
+         alert("Added successfully"),
+        )
     }
 
     // const updateUser = async (id) => {
@@ -27,16 +31,20 @@ function Books() {
     }
 
     useEffect(() => {
-        const getBooks = async () => {
+        // const getBooks = async () => {
+        //     const data = await getDocs(booksCollectionRef)
+        //     SetAllbooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        // }
+        // getBooks()
+        (async () => {
             const data = await getDocs(booksCollectionRef)
             SetAllbooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        }
-        getBooks()
-    }, [])
+        })()
+    }, [createBook])
 
     return (
-        <div className="App">
-            <div>
+        <div className="">
+            <div className='add'>
                 <input placeholder="Title" onChange={e => setTitle(e.target.value)} />
                 <input placeholder="Author" onChange={e => setAuthor(e.target.value)} />
                 <input placeholder="Genre" onChange={e => setGenre(e.target.value)} />

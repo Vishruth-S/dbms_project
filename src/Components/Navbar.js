@@ -1,6 +1,7 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import React, { useState } from 'react'
 import { auth } from '../firebase-config';
+import './Navbar.css'
 
 const Navbar = () => {
     const [user, setUser] = useState({});
@@ -11,8 +12,13 @@ const Navbar = () => {
         await signOut(auth);
     };
     return (
-        <div>
-            {user ? <span><span>Logged in as {user.email}</span><span><button onClick={logout}>Log out</button></span></span> : <a href='/login'>Login</a>}
+        <div className='navbar'>
+            <h1>LMS</h1>
+            {user ? <span ><span className='nav'>Logged in as: {user.email}</span><span className='nav'><button className='button' onClick={logout}>Log out</button></span></span> : <a  href='/login'>
+                <button className='button'>
+                Login
+                </button>
+                </a>}
             {/* <span></span> */}
         </div>
     )

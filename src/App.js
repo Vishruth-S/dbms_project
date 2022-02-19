@@ -29,8 +29,6 @@ function App() {
         <Route path="/requestedbooks" element={<RequireAuth><RequestedBooks /></RequireAuth>} />
         <Route path="/issuedbooks" element={<RequireAuth><ViewIssuedBooks /></RequireAuth>} />
         <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
-
-
         <Route path="/viewrequests" element={<ViewRequests />} />
       </Routes >
     </Router>

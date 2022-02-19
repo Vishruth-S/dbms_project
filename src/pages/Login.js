@@ -5,6 +5,7 @@ import {
     signOut,
 } from "firebase/auth";
 import { auth } from "../firebase-config";
+import './Login.css'
 
 function Login() {
     const [loginEmail, setLoginEmail] = useState("");
@@ -34,7 +35,8 @@ function Login() {
     };
 
     return (
-        <div>
+        <>
+         {/* <div>
             <div>
                 <h3> Login </h3>
                 <input
@@ -54,11 +56,46 @@ function Login() {
                 <button onClick={login}> Login</button>
             </div>
 
-            {/* <h4> User Logged In: </h4>
-            {user?.email} */}
+             {/* <h4> User Logged In: </h4>
+            {user?.email} 
 
-            {/* <button onClick={logout}> Sign Out </button> */}
-        </div>
+             <button onClick={logout}> Sign Out </button>  */}
+         {/* </div>   */}
+
+      
+  <div class="formC">
+  		<h2 class="title">
+  				Welcome!
+   	</h2>
+       <div className="form">
+   	 <input
+                    placeholder="Email..."
+                    onChange={(event) => {
+                        setLoginEmail(event.target.value);
+                    }}
+                />
+                <input
+                    placeholder="Password..."
+                    type="password"
+                    onChange={(event) => {
+                        setLoginPassword(event.target.value);
+                    }}
+                />
+
+                <button onClick={login}> Login</button>
+                </div>
+                
+   	<div class="bottom">
+						<span>
+							Don't have an account?
+						</span>
+						<a href="/register">
+							Sign Up
+						</a>
+					</div>
+  </div> 
+
+</>
     );
 }
 
