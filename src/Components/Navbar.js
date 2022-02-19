@@ -13,21 +13,30 @@ const Navbar = () => {
         await signOut(auth);
     };
     return (
-        <div>
-            <span>
-                <Link to="/">HOME</Link>
-                <Link to="/books">View all books</Link>
+        <div className='navbar'>
+            <span className='nav'>
+                <span className='nav-links'>
+                    <Link to="/">HOME</Link>
+                </span>
+                <span className='nav-links' >
+                    <Link to="/books">Books</Link>
+                </span>
             </span>
+            {/* <span className='nav'>
+                <Link to="/">HOME</Link>
+                <Link to="/books">Books</Link>
+            </span> */}
+            
             {user ?
-                <span>
-                    <span>Logged in as {user.email}</span>
-                    <span>
+                <span className='nav'>
+                    {/* <span>Logged in as {user.email}</span> */}
+                    <span className='nav-links'>
+                        <Link to="/profile">User Dashboard</Link>
+                    </span>
+                    <span className='nav-links'>
                         <button onClick={logout}>
                             Log out
                         </button>
-                    </span>
-                    <span>
-                        <Link to="/profile">View User Dashboard</Link>
                     </span>
                 </span>
                 : <a href='/login'>Login</a>}
