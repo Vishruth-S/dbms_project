@@ -3,6 +3,7 @@ import { arrayUnion, collection, doc, getDocs, updateDoc } from 'firebase/firest
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { auth, db } from '../firebase-config';
+import './OneBook.css'
 
 const OneBook = () => {
     const [id, setId] = useState()
@@ -69,11 +70,11 @@ const OneBook = () => {
         // console.log(bookDoc.data())
     }, [id])
     return (
-        <div>
-            <div>Book details</div>
-            <p>Title- {book.title}</p>
-            <p>Author- {book.author}</p>
-            <p>Genre- {book.genre}</p>
+        <div className='onebook'>
+            <h1>Book details</h1>
+            <p>Title: <span>{book.title}</span></p>
+            <p>Author: <span>{book.author}</span></p>
+            <p>Genre: <span>{book.genre}</span></p>
             {/* <p>Available- {book.available}</p> */}
 
             {!user ? <p>Please sign in to request</p> :

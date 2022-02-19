@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import DisplayBooksInProfile from '../Components/DisplayBooksInProfile';
 import DisplayFinesInProfile from '../Components/DisplayFinesInProfile';
 import { auth, db } from '../firebase-config';
-
+import './Profile.css';
 const Profile = () => {
     const [user, setUser] = useState({});
     const [userData, setUserData] = useState({})
@@ -24,13 +24,13 @@ const Profile = () => {
         getData();
     }, [user])
     return (
-        <div>
-            <h2>My profile</h2>
-            <h3>Name: {userData?.name}</h3>
-            <h4>Library id: {userData?.uid}</h4>
-            <p>Registered email: {userData?.email}</p>
-            <p>Phone: {userData?.phone}</p>
-            {userData?.requestedBooks && userData.requestedBooks.length > 0 ?
+        <div className='profile'>
+            <h2>My Profile</h2>
+            <h3>Name: {userData.name}</h3>
+            <h4>Library id: {userData.uid}</h4>
+            <p>Registered email: {userData.email}</p>
+            <p>Phone: {userData.phone}</p>
+            {userData.requestedBooks && userData.requestedBooks.length > 0 ?
                 <div>
                     <h3>Requested books</h3>
                     <DisplayBooksInProfile bookIds={userData.requestedBooks} />
