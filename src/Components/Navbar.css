@@ -6,6 +6,7 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     height: 10vh;
+    padding-right: 1rem;
     padding-top: 10px;
     /* border-bottom: 1px solid black; */
     box-shadow:  5px 5px 10px #c1c1c1,
@@ -41,8 +42,8 @@
     margin-top: 10px;
     border-radius: 25px;
 }
-.nav-links button:hover{
-    box-shadow: none;
+.nav-links span button:hover{
+    border-radius: 50% ;
 }
 
 .button {

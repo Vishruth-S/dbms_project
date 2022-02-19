@@ -1,7 +1,12 @@
+.displaybooks h3{
+    text-decoration: underline;
+    justify-content: center;
+}
 .books{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    
 
 }
 

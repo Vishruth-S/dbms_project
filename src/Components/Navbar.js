@@ -32,7 +32,7 @@ const Navbar = () => {
             <span className='nav'>
                 <span className='nav-links'>
                     {user && user?.uid === admin
-                        ? <Link to="/adminlanding">Go to Admin Dashboard</Link>
+                        ? <Link to="/adminlanding">Admin Dashboard</Link>
                         : <Link to="/">HOME</Link>
                     }
                 </span>

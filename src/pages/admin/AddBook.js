@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { db } from '../../firebase-config'
 import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc, arrayUnion, setDoc } from "firebase/firestore"
 // import DisplayBooks from '../Components/DisplayBooks';
+import './AddBook.css'
 
 function AddBook() {
     const [title, setTitle] = useState('')
@@ -82,16 +83,17 @@ function AddBook() {
     }
 
     return (
-        <div className="App">
-            <div>
-                <h2>Add book</h2>
+        <div className="addbook">
+            <h2>Add book</h2>
+            <div className='add'>
+                
                 <input placeholder="Title" onChange={e => setTitle(e.target.value)} />
                 <input placeholder="Author" onChange={e => setAuthor(e.target.value)} />
                 <input placeholder="Genre" onChange={e => setGenre(e.target.value)} />
                 <input placeholder="Price" onChange={e => setPrice(e.target.value)} />
                 <input placeholder="Publisher" onChange={e => SetPublisher(e.target.value)} />
                 <input placeholder="ISBN" onChange={e => setIsbn(e.target.value)} />
-                <label>Choose a shelf</label>
+                <label>Choose a shelf:</label>
                 <select defaultValue="select" onChange={e => getSelectedValue(e)}>
                     <option disabled value="select">select</option>
                     {allShelves.map(shelf => (
