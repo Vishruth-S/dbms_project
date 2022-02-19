@@ -1,7 +1,8 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import React, { useState } from 'react'
+import { doc, getDoc } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { auth } from '../firebase-config';
+import { auth, db } from '../firebase-config';
 import './Navbar.css'
 
 const Navbar = () => {
@@ -12,26 +13,43 @@ const Navbar = () => {
     const logout = async () => {
         await signOut(auth);
     };
+    const [admin, setAdmin] = useState({})
+
+    const getAdmins = async () => {
+        const currentUser = user.uid ? doc(db, "admins", user.uid) : null
+        const currentUserData = await getDoc(currentUser);
+        // console.log(currentUserData.data())
+        setAdmin(currentUserData.data().uid)
+    }
+    useEffect(() => {
+        getAdmins()
+    }, [user])
+
     return (
         <div>
-            <span>
-                <Link to="/">HOME</Link>
-                <Link to="/books">View all books</Link>
-            </span>
-            {user ?
+            <div>
                 <span>
-                    <span>Logged in as {user.email}</span>
-                    <span>
-                        <button onClick={logout}>
-                            Log out
-                        </button>
-                    </span>
-                    <span>
-                        <Link to="/profile">View User Dashboard</Link>
-                    </span>
+                    {user && user.uid === admin
+                        ? <Link to="/adminlanding">Go to Admin Dashboard</Link>
+                        : <Link to="/">HOME</Link>}
+                    <Link to="/books">View all books</Link>
                 </span>
-                : <a href='/login'>Login</a>}
-            {/* <span></span> */}
+                {user ?
+                    <span>
+                        <span>Logged in as {user.email}</span>
+                        <span>
+                            <button onClick={logout}>
+                                Log out
+                            </button>
+                        </span>
+                        <span>
+                            {user && user.uid === admin ? null :
+                                <Link to="/profile">View User Dashboard</Link>
+                            }
+                        </span>
+                    </span>
+                    : <a href='/login'>Login</a>}
+            </div>
         </div>
     )
 }

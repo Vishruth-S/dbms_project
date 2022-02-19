@@ -44,6 +44,9 @@ function AddBook() {
         // console.log(shelfDoc)
         await updateDoc(shelfDoc, {
             books: arrayUnion(bookdocId)
+        }).then(() => {
+            alert("Added successfully")
+            window.location.reload()
         })
     }
     // const updateUser = async (id) => {
