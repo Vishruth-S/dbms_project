@@ -28,7 +28,7 @@ const ViewIssuedBooks = () => {
         await updateDoc(userDoc, {
             issuedBooks: arrayRemove(bookId),
         })
-        alert("Book renewed successfully")
+        alert("Book marked as returned")
         window.location.reload();
     }
 
@@ -45,7 +45,7 @@ const ViewIssuedBooks = () => {
                                     <p>Title : {book.data.title}</p>
                                     <p>Book id: {book.id}</p>
                                     <p>issued to : {book.data.issuedTo}</p>
-                                    <button onClick={() => renewBook(book.id, book.data.issuedTo)}>Renew</button>
+                                    <button onClick={() => renewBook(book.id, book.data.issuedTo)}>Mark as returned</button>
                                 </div>
                                 </div>
                                 : null
