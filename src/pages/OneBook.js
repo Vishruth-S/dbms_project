@@ -93,25 +93,32 @@ const OneBook = () => {
     return (
         <div className='onebook'>
             <h1>Book details</h1>
-            <p>Title: <span>{book.title}</span></p>
-            <p>Author: <span>{book.author}</span></p>
-            <p>Genre: <span>{book.genre}</span></p>
-            {/* <p>Available- {book.available}</p> */}
-            {user && type === "admin" ?
-                <div className='onebook'>
-                    <p>Price: <span>{book.price}</span></p>
-                    <p>ISBN: <span>{book.isbn}</span></p>
-                    <p>Issued to: <span>{book.issuedTo && book.issuedTo.length > 0 ? book.issuedTo : <span>Not issued</span>}</span></p>
+            <div className='entireCard'>
+                <div className='cover'>
+                    <img src={book.img==null?"https://images-na.ssl-images-amazon.com/images/I/81Hf9W0uoxL.jpg":book.img} />
                 </div>
-                :
-                null}
-            {!user ? <p>Please sign in to request</p> :
-                type === "admin" ?
-                    book.issuedTo && book.issuedTo.length > 0 ? <button disabled>Issued book cannot be deleted</button> : <button onClick={() => deleteBook(id)}>Delete</button>
-                    : book.available === "yes" ? <button onClick={requestBook}>Request</button>
+                <div class="right">
+                    <p>Title: <span>{book.title}</span></p>
+                    <p>Author: <span>{book.author}</span></p>
+                    <p>Genre: <span>{book.genre}</span></p>
+                    {/* <p>Available- {book.available}</p> */}
+                    {user && type === "admin" ?
+                        <div className='onebook'>
+                            <p>Price: <span>{book.price}</span></p>
+                            <p>ISBN: <span>{book.isbn}</span></p>
+                            <p>Issued to: <span>{book.issuedTo && book.issuedTo.length > 0 ? book.issuedTo : <span>Not issued</span>}</span></p>
+                        </div>
                         :
-                        <button disabled>Unavailable</button>
-            }
+                        null}
+                    {!user ? <p>Please sign in to request</p> :
+                        type === "admin" ?
+                            book.issuedTo && book.issuedTo.length > 0 ? <button disabled>Issued book cannot be deleted</button> : <button onClick={() => deleteBook(id)}>Delete</button>
+                            : book.available === "yes" ? <button onClick={requestBook}>Request</button>
+                                :
+                                <button disabled>Unavailable</button>
+                    }
+                </div>
+            </div>
         </div>
     )
 }
