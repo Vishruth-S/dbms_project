@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { db } from '../firebase-config'
-import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
+import { collection, getDocs, addDoc, doc, deleteDoc } from "firebase/firestore"
 import DisplayBooks from '../Components/DisplayBooks';
 import './Book.css'
 
@@ -11,6 +11,9 @@ const Books = () => {
     const [available, SetAvailable] = useState(false)
     const [allbooks, SetAllbooks] = useState([])
     const booksCollectionRef = collection(db, "books")
+
+    const [filteredBooks, setFilteredBooks] = useState([])
+    const [search, setSearch] = useState('')
 
     const createBook = async () => {
         await addDoc(booksCollectionRef, { title: title, author: author, genre: genre, available: available })
@@ -28,6 +31,13 @@ const Books = () => {
     const deleteUser = async (id) => {
         const bookDoc = doc(db, "books", id);
         await deleteDoc(bookDoc)
+    }
+
+    const filter = (e) => {
+        setSearch(e.target.value)
+        const temp = allbooks.filter(book => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()))
+        setFilteredBooks(temp)
+        console.log(temp)
     }
 
     useEffect(() => {
@@ -51,7 +61,10 @@ const Books = () => {
                 <input placeholder="Available" onChange={e => SetAvailable(e.target.value)} />
                 <button onClick={createBook}>Add book</button>
             </div> */}
-            <DisplayBooks allbooks={allbooks} />
+            <div className='search-container'>
+                <input placeholder='Search by title or author' onChange={e => filter(e)} />
+            </div>
+            <DisplayBooks allbooks={search !== '' ? filteredBooks : allbooks} />
         </div>
     );
 }

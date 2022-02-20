@@ -105,6 +105,7 @@ const OneBook = () => {
                     {/* <p>Available- {book.available}</p> */}
                     {user && type === "admin" ?
                         <div className='onebook'>
+                            <p>Book id <span>{id}</span></p>
                             <p>Price: <span>{book.price}</span></p>
                             <p>ISBN: <span>{book.isbn}</span></p>
                             <p>Issued to: <span>{book.issuedTo && book.issuedTo.length > 0 ? book.issuedTo : <span>Not issued</span>}</span></p>

@@ -1,6 +1,7 @@
 import { arrayUnion, collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase-config'
+import './Fines.css'
 
 const Fines = () => {
     const [amount, setAmount] = useState('')
@@ -56,28 +57,33 @@ const Fines = () => {
         updateUserFine()
     }, [fineId])
     return (
-        <div>
-            <div>
+        <div className='fines-container'>
+            <div className='add-fines'>
                 <h3>Add fine</h3>
-                <input placeholder='User ID' onChange={e => setUser(e.target.value)} />
-                <button onClick={getUser}>Get issued books of user</button>
+                <input className='fines-input' placeholder='Enter User ID' onChange={e => setUser(e.target.value)} />
+                <div><button className='fines-button' onClick={getUser}>Get issued books of user</button></div>
                 {issuedBooks && issuedBooks.length > 0
                     ? <div>
                         <label>Select book to issue fine</label>
-                        <select defaultValue="select" onChange={e => getSelectedValue(e)}>
+                        <select className='fines-input' defaultValue="select" onChange={e => getSelectedValue(e)}>
                             <option disabled value="select">select</option>
                             {issuedBooks.map(book => (
                                 <option key={book} value={book}>{book}</option>
                             ))}
                         </select>
-                        <input placeholder='enter amount' onChange={e => setAmount(e.target.value)} />
-                        <label>Enter due date</label>
-                        <input type="date" onChange={e => setDue(e.target.value)} />
-                        <button onClick={issueFine}>Issue Fine</button>
+                        <div>
+                            <label className="fines-temp1">Enter amount</label>
+                            <input className='fines-input' placeholder='enter amount' onChange={e => setAmount(e.target.value)} />
+                        </div>
+                        <label className="fines-temp2">Enter due date</label>
+                        <input className='fines-input' type="date" onChange={e => setDue(e.target.value)} />
+                        <div>
+                            <button className='fines-button' onClick={issueFine}>Issue Fine</button>
+                        </div>
                     </div>
                     : issuedBooks === null ? null : <p>User doesn't have any issued books</p>}
             </div>
-            <div>
+            <div className='issued-fines'>
                 <h3>Issued fines</h3>
                 {allFines.map(fine => (
                     <div>
@@ -87,6 +93,7 @@ const Fines = () => {
                         <p>Due date: {fine.due}</p>
                     </div>
                 ))}
+                {allFines.length === 0 ? <p>There are no issued fines</p> : null}
             </div>
         </div>
     )
