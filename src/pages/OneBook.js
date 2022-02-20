@@ -90,12 +90,13 @@ const OneBook = () => {
         // getUserData()
         // console.log(bookDoc.data())
     }, [id])
+    console.log(book.cover)
     return (
         <div className='onebook'>
             <h1>Book details</h1>
             <div className='entireCard'>
                 <div className='cover'>
-                    <img src={book.img == null ? "https://images-na.ssl-images-amazon.com/images/I/81Hf9W0uoxL.jpg" : book.img} />
+                    <img src={book.cover==undefined?"https://cdn.pixabay.com/photo/2018/01/03/09/09/book-3057901_640.png":book.cover} />
                 </div>
                 <div class="right">
                     <p>Title: <span>{book.title}</span></p>
