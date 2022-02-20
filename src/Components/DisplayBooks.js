@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './DisplayBooks.css';
 
-const DisplayBooks = ({ allbooks }) => {
-    // console.log(props)
+const DisplayBooks = ({ type, allbooks }) => {
     const [allBooks, SetAllbooks] = useState([])
     useEffect(() => {
         SetAllbooks(allbooks)
@@ -20,7 +19,7 @@ const DisplayBooks = ({ allbooks }) => {
                         {/* <p><span>Image</span> - {book.image}</p> */}
                         <p> <span>Available : </span>  {book.available}</p>
                         {/* </div> */}
-                        <a href={`/books/view?id=${book.id}`}>
+                        <a href={`/books/view?id=${book.id}&type=${type}`}>
                             <div className='viewButton'>
                                 VIEW
                             </div>

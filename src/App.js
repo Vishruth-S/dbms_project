@@ -21,6 +21,7 @@ import AdminAuth from './Components/AdminAuth'
 import Fines from './pages/admin/Fines';
 import Landing from './pages/Landing';
 import AdminLanding from './pages/admin/AdminLanding';
+import ViewBooks from './pages/admin/ViewBooks';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/adminlogin" element={<Login />} />
         <Route path="/adminregister" element={<Register_admin />} />
         <Route path="/adminlanding" element={<AdminAuth><AdminLanding /></AdminAuth>} />
+        <Route path="/viewbooks" element={<ViewBooks />} />
         <Route path="/issuedbooks" element={<AdminAuth><ViewIssuedBooks /></AdminAuth>} />
         <Route path="/viewrequests" element={<AdminAuth><ViewRequests /></AdminAuth>} />
         <Route path="/users" element={<AdminAuth><Users /></AdminAuth>} />

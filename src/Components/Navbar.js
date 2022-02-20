@@ -37,7 +37,10 @@ const Navbar = () => {
                     }
                 </span>
                 <span className='nav-links' >
-                    <Link to="/books">Books</Link>
+                    {user && user?.uid === admin
+                        ? <Link to="/viewbooks">BOOKS</Link>
+                        : <Link to="/books">BOOKS</Link>
+                    }
                 </span>
             </span>
             {/* <span className='nav'>

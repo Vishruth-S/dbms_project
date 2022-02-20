@@ -1,0 +1,27 @@
+
+.add{
+    display: flex;
+    margin-top: 3rem;
+    border: 1px solid black;
+    width: fit-content;
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+
+
+}
+.add input{
+    margin: 0.5rem;
+   
+    
+}
+.add button{
+    background: black;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}

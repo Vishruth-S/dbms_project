@@ -12,6 +12,7 @@ const Profile = () => {
     const [userData, setUserData] = useState({})
 
     const getData = async () => {
+        if (!user || !user.uid) return;
         const currentUser = user.uid ? doc(db, "users", user.uid) : null
         const currentUserData = await getDoc(currentUser);
         setUserData(currentUserData.data())
@@ -26,52 +27,52 @@ const Profile = () => {
     }, [user])
     return (
         <div >
-        <div className='profile'>
-            <h2>Profile</h2>
-            <img src={profile}></img>
-            <p>Name: <span>{userData.name}</span></p>
-            <p>Library id: <span>{userData.uid}</span></p>
-            <p>Registered email: <span>{userData.email}</span></p>
-            <p>Phone: <span>{userData.phone}</span></p>
-        </div>
-        <div className='table'>
-            <div className='trow'>
-            <h3>Requested books</h3>
-            {userData.requestedBooks && userData.requestedBooks.length > 0 ?
-                <div>
-                    
-                    <DisplayBooksInProfile bookIds={userData.requestedBooks} />
-                </div>
-                : <div>
-                    {/* <button disabled>View Requested books</button> */}
-                    <span>NO BOOK REQUESTED</span></div>
-            }
+            <div className='profile'>
+                <h2>Profile</h2>
+                <img src={profile}></img>
+                <p>Name: <span>{userData.name}</span></p>
+                <p>Library id: <span>{userData.uid}</span></p>
+                <p>Registered email: <span>{userData.email}</span></p>
+                <p>Phone: <span>{userData.phone}</span></p>
             </div>
-            <div className='trow'>
-            <h3>Issued books</h3>
-            {userData.issuedBooks && userData.issuedBooks.length > 0 ?
-                <div>
-                    
-                    <DisplayBooksInProfile bookIds={userData.issuedBooks} />
+            <div className='table'>
+                <div className='trow'>
+                    <h3>Requested books</h3>
+                    {userData?.requestedBooks && userData.requestedBooks.length > 0 ?
+                        <div>
+
+                            <DisplayBooksInProfile bookIds={userData.requestedBooks} />
+                        </div>
+                        : <div>
+                            {/* <button disabled>View Requested books</button> */}
+                            <span>NO BOOK REQUESTED</span></div>
+                    }
                 </div>
-                : <div>
-                    {/* <button disabled>View Issued books</button> */}
-                    <span>NO BOOKS ISSUED</span></div>
-            }
-            
-            </div>
-            <div className='trow'>
-            <h3>Fines</h3>
-            {userData.fines && userData.fines.length > 0 ?
-                <div>
-                    
-                    <DisplayFinesInProfile fineIds={userData.fines} />
+                <div className='trow'>
+                    <h3>Issued books</h3>
+                    {userData?.issuedBooks && userData.issuedBooks.length > 0 ?
+                        <div>
+
+                            <DisplayBooksInProfile bookIds={userData.issuedBooks} />
+                        </div>
+                        : <div>
+                            {/* <button disabled>View Issued books</button> */}
+                            <span>NO BOOKS ISSUED</span></div>
+                    }
+
                 </div>
-                : <div>
-                    {/* <button disabled>View Fines</button>  */}
-                    <span>NO FINES</span></div>
-            }
-            </div>
+                <div className='trow'>
+                    <h3>Fines</h3>
+                    {userData?.fines && userData.fines.length > 0 ?
+                        <div>
+
+                            <DisplayFinesInProfile fineIds={userData.fines} />
+                        </div>
+                        : <div>
+                            {/* <button disabled>View Fines</button>  */}
+                            <span>NO FINES</span></div>
+                    }
+                </div>
             </div>
         </div>
     )

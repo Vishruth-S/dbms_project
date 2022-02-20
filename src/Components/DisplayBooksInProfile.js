@@ -29,7 +29,7 @@ const DisplayBooksInProfile = ({ bookIds }) => {
         <div>
             {allbooks.map(book => (
                 <div>
-                    {bookIds.includes(book.id) === true ? <p>{book.data.title}</p> : null}
+                    {bookIds.includes(book.id) === true ? <p>{book.data.title} -- {book.id}</p> : null}
                 </div>
             ))}
         </div>
