@@ -9,11 +9,10 @@ const DisplayBooks = ({ allbooks }) => {
     }, [allbooks])
     return (
         <div className='displaybooks' >
-            {console.log(allBooks)}
             <h3>All Available Books</h3>
             <div className='books'>
                 {allBooks.map(book => (
-                    <div className='card'>
+                    <div className='card' key={book.id}>
                         {/* <div className='card_content'> */}
                         <p><span>Title :</span> {book.title}</p>
                         <p><span>Author :</span>  {book.author}</p>

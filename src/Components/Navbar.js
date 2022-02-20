@@ -59,18 +59,18 @@ const Navbar = () => {
                         </button>
                     </span>
                 </span>
-                : 
+                :
                 <div className='lognav'>
-                {/* <a href='/login'>User</a>
+                    {/* <a href='/login'>User</a>
                 <a href='/login?type=admin'>Admin</a> */}
-                <span>
-                <Link to="/login">USER</Link>
-                </span>
-                <span>
-                <Link to="/login?type=admin">ADMIN</Link>
-                </span>
+                    <span>
+                        <Link to="/login?type=user">USER</Link>
+                    </span>
+                    <span>
+                        <Link to="/login?type=admin">ADMIN</Link>
+                    </span>
                 </div>
-                }
+            }
             {/* <span></span> */}
         </div>
     )

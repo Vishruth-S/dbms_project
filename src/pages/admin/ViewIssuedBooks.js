@@ -1,3 +1,4 @@
+import { arrayRemove, doc, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase-config';
 import './BookIssue.css'
@@ -15,19 +16,41 @@ const ViewIssuedBooks = () => {
         ))
 
     }, [allbooks.length]);
+
+    const renewBook = async (bookId, userId) => {
+        // Book.issuedTo = ""
+        // update available as yes
+        // user.issuedBooks remove
+        const bookDoc = doc(db, "books", bookId)
+        const newFields = { issuedTo: "", available: "yes" };
+        await updateDoc(bookDoc, newFields)
+        const userDoc = doc(db, "users", userId)
+        await updateDoc(userDoc, {
+            issuedBooks: arrayRemove(bookId),
+        })
+        alert("Book renewed successfully")
+        window.location.reload();
+    }
+
     return (
         <div>
             <h2>IssuedBooks</h2>
             <div className='cardflex'>
                 {allbooks.map(book => (
-                    <div className='card'>
-                        {book.data.issuedTo && book.data.issuedTo.length > 0
-                            ? <div>
-                                <p>Titel : {book.data.title}</p>
-                                <p>issued to : {book.data.issuedTo}</p>
-                            </div>
-                            : null}
-                    </div>
+                    <span key={book.id}>
+                        {
+                            book.data.issuedTo && book.data.issuedTo.length > 0
+                                ?
+                                <div className='card' key={book.id}> <div>
+                                    <p>Title : {book.data.title}</p>
+                                    <p>Book id: {book.id}</p>
+                                    <p>issued to : {book.data.issuedTo}</p>
+                                    <button onClick={() => renewBook(book.id, book.data.issuedTo)}>Renew</button>
+                                </div>
+                                </div>
+                                : null
+                        }
+                    </span>
                 ))}
             </div>
         </div>

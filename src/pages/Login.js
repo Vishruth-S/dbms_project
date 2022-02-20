@@ -24,7 +24,8 @@ function Login() {
 
     useEffect(() => {
         setUserType(searchParams.get("type"))
-    }, [])
+        console.log(userType)
+    }, [searchParams.get("type")])
 
     const login = async () => {
         try {
@@ -70,16 +71,8 @@ function Login() {
 
                         <button onClick={login}> Login</button>
                     </div>
-                    {userType === "admin" ? 
-                        < div class="bottom">
-                        <span>
-                            Don't have an account?
-                        </span>
-                        <a href="/adminregister">
-                            Sign Up
-                        </a>
-                        </div>
-                    :
+                    {userType === "admin" ? null
+                        :
                         < div class="bottom">
                             <span>
                                 Don't have an account?

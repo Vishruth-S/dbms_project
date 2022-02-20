@@ -47,9 +47,10 @@ function Users() {
             </div> */}
             {users.map(user => {
                 return (
-                    <div className='ucard'>
+                    <div className='ucard' key={user.uid}>
                         <h3>{user.name}</h3>
-                        <p>{user.age}</p>
+                        <p>{user.email}</p>
+                        <p>{user.phone}</p>
                         {/* <button onClick={() => { updateUser(user.id, user.age) }}>Increase age</button> */}
                         <button onClick={() => { deleteUser(user.id) }}> Delete User</button>
                     </div>
