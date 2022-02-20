@@ -1,4 +1,4 @@
-import { arrayUnion, collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore'
+import { arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase-config'
 import './Fines.css'
@@ -52,6 +52,22 @@ const Fines = () => {
         const data = await getDocs(finesCollectionRef)
         setAllFines(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     }
+    const payFine = async (fineId, userId) => {
+        // remove fine for user
+        console.log(userId, fineId)
+        const userDoc = doc(db, "users", userId)
+        console.log(userDoc)
+        await updateDoc(userDoc, {
+            fines: arrayRemove(fineId)
+        })
+        // remove fine 
+        const fineDoc = doc(db, "fines", fineId);
+        console.log(fineDoc)
+        await deleteDoc(fineDoc).then(() => {
+            alert("Fine paid successfully");
+            window.location.reload()
+        })
+    }
     useEffect(() => {
         getAllFines()
         updateUserFine()
@@ -86,11 +102,14 @@ const Fines = () => {
             <div className='issued-fines'>
                 <h3>Issued fines</h3>
                 {allFines.map(fine => (
-                    <div>
-                        <p>Issued to: {fine.user}</p>
-                        <p>Book associated: {fine.book}</p>
-                        <p>Amount: {fine.amount}</p>
-                        <p>Due date: {fine.due}</p>
+                    <div className='issued-fines-box' key={fine.id}>
+                        <p><b>Issued to:</b> {fine.user}</p>
+                        <p><b>Book associated:</b> {fine.book}</p>
+                        <p><b>Amount:</b> {fine.amount}</p>
+                        <p><b>Due date:</b> {fine.due}</p>
+                        <div>
+                            <button className='fines-button' onClick={() => payFine(fine.id, fine.user)}>Mark as Paid</button>
+                        </div>
                     </div>
                 ))}
                 {allFines.length === 0 ? <p>There are no issued fines</p> : null}

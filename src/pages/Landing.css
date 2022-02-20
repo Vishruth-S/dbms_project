@@ -1,7 +1,11 @@
 .land{
     background-image: url('./bg.jpg');
-    height: 90vh;
+    height: 85vh;
     background-size: cover;
+    
+}
+.land-container {
+    overflow: hidden;
 }
 
 .landi{

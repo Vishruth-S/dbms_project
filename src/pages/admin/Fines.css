@@ -36,3 +36,12 @@
 .fines-temp2 {
     margin-left: 10=5px;
 }
+
+.issued-fines-box {
+    border: 2px solid;
+    width: 25%;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: left;
+    padding: 12px;
+}

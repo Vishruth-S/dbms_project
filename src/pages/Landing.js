@@ -11,9 +11,10 @@ const Landing = () => {
     });
 
     return (
-        <div className='land'>
-            <h1>Welcome to Library</h1>
-            {/* <div className='landi'>
+        <div className='land-container'>
+            <div className='land'>
+                <h1>Welcome to Library</h1>
+                {/* <div className='landi'>
                 <Link  to="/books">View all books</Link>
             </div>
             {!user ?
@@ -29,6 +30,7 @@ const Landing = () => {
             } */}
 
 
+            </div>
         </div>
     )
 }
