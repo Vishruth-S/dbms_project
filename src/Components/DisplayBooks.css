@@ -1,6 +1,8 @@
 .displaybooks h3{
     text-decoration: underline;
     justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
 }
 .books{
     display: flex;

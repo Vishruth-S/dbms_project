@@ -56,3 +56,25 @@
     display: inline-block;
     font-size: 16px;
   }
+
+  .lognav{
+    display: flex;
+    flex: row nowrap;
+    justify-content: space-evenly;
+    /* padding:  0 1rem 0rem 1rem; */
+   
+  }
+  .lognav span{
+      margin-left: 20px;
+      padding: 0 1rem 0 1rem;
+      margin-bottom: 5px;
+     
+  }
+
+  .lognav span:hover{
+    box-shadow:  5px 5px 10px #c1c1c1,
+    -5px -5px 10px #ffffff;
+    /* box-shadow:  11px 11px 22px #c5c5c5,
+    -11px -11px 22px #fbfbfb; */
+transition: 0.125s;
+  }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase-config';
+import './BookIssue.css'
 
 const ViewIssuedBooks = () => {
     const [allbooks, setAllbooks] = useState([])
@@ -17,16 +18,18 @@ const ViewIssuedBooks = () => {
     return (
         <div>
             <h2>IssuedBooks</h2>
-            {allbooks.map(book => (
-                <div>
-                    {book.data.issuedTo && book.data.issuedTo.length > 0
-                        ? <div>
-                            <p>{book.data.title}</p>
-                            <p>issued to - {book.data.issuedTo}</p>
-                        </div>
-                        : null}
-                </div>
-            ))}
+            <div className='cardflex'>
+                {allbooks.map(book => (
+                    <div className='card'>
+                        {book.data.issuedTo && book.data.issuedTo.length > 0
+                            ? <div>
+                                <p>Titel : {book.data.title}</p>
+                                <p>issued to : {book.data.issuedTo}</p>
+                            </div>
+                            : null}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

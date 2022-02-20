@@ -70,8 +70,16 @@ function Login() {
 
                         <button onClick={login}> Login</button>
                     </div>
-                    {userType === "admin" ? null
-                        :
+                    {userType === "admin" ? 
+                        < div class="bottom">
+                        <span>
+                            Don't have an account?
+                        </span>
+                        <a href="/adminregister">
+                            Sign Up
+                        </a>
+                        </div>
+                    :
                         < div class="bottom">
                             <span>
                                 Don't have an account?

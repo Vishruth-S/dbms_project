@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
 import { auth, db } from "../../firebase-config";
 import { onAuthStateChanged } from 'firebase/auth';
+import './User.css'
 
 function Users() {
     const [newName, setNewName] = useState('')
@@ -38,7 +39,7 @@ function Users() {
     }, [])
 
     return (
-        <div className="App">
+        <div className="userflex">
             {/* <div>
                 <input placeholder="Name" onChange={e => setNewName(e.target.value)} />
                 <input type="number" placeholder='number' onChange={e => setNewAge(e.target.value)} />
@@ -46,7 +47,7 @@ function Users() {
             </div> */}
             {users.map(user => {
                 return (
-                    <div>
+                    <div className='ucard'>
                         <h3>{user.name}</h3>
                         <p>{user.age}</p>
                         {/* <button onClick={() => { updateUser(user.id, user.age) }}>Increase age</button> */}

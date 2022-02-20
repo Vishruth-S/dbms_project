@@ -1,0 +1,21 @@
+.cardflex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.card{
+    width: max-content;
+    border: 1px solid black;
+}
+
+.card p{
+    font-weight: 300;
+    font-size: medium;
+    margin-bottom: 5px;
+}
+.card button{
+    padding: 10px;
+}
+

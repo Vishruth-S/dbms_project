@@ -25,6 +25,7 @@ const Profile = () => {
         getData();
     }, [user])
     return (
+        <div >
         <div className='profile'>
             <h2>Profile</h2>
             <img src={profile}></img>
@@ -32,27 +33,46 @@ const Profile = () => {
             <p>Library id: <span>{userData.uid}</span></p>
             <p>Registered email: <span>{userData.email}</span></p>
             <p>Phone: <span>{userData.phone}</span></p>
+        </div>
+        <div className='table'>
+            <div className='trow'>
+            <h3>Requested books</h3>
             {userData.requestedBooks && userData.requestedBooks.length > 0 ?
                 <div>
-                    <h3>Requested books</h3>
+                    
                     <DisplayBooksInProfile bookIds={userData.requestedBooks} />
                 </div>
-                : <div><button disabled>View Requested books</button> <span>You have not requested any books yet</span></div>
+                : <div>
+                    {/* <button disabled>View Requested books</button> */}
+                    <span>NO BOOK REQUESTED</span></div>
             }
+            </div>
+            <div className='trow'>
+            <h3>Issued books</h3>
             {userData.issuedBooks && userData.issuedBooks.length > 0 ?
                 <div>
-                    <h3>Issued books</h3>
+                    
                     <DisplayBooksInProfile bookIds={userData.issuedBooks} />
                 </div>
-                : <div><button disabled>View Issued books</button> <span>You have not been issued any books yet</span></div>
+                : <div>
+                    {/* <button disabled>View Issued books</button> */}
+                    <span>NO BOOKS ISSUED</span></div>
             }
+            
+            </div>
+            <div className='trow'>
+            <h3>Fines</h3>
             {userData.fines && userData.fines.length > 0 ?
                 <div>
-                    <h3>Fines</h3>
+                    
                     <DisplayFinesInProfile fineIds={userData.fines} />
                 </div>
-                : <div><button disabled>View Fines</button> <span>You don't have any fines</span></div>
+                : <div>
+                    {/* <button disabled>View Fines</button>  */}
+                    <span>NO FINES</span></div>
             }
+            </div>
+            </div>
         </div>
     )
 }
