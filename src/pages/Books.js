@@ -12,6 +12,9 @@ const Books = () => {
     const [allbooks, SetAllbooks] = useState([])
     const booksCollectionRef = collection(db, "books")
 
+    const [filteredBooks, setFilteredBooks] = useState([])
+    const [search, setSearch] = useState('')
+
     const createBook = async () => {
         await addDoc(booksCollectionRef, { title: title, author: author, genre: genre, available: available })
             .then(
@@ -28,6 +31,13 @@ const Books = () => {
     const deleteUser = async (id) => {
         const bookDoc = doc(db, "books", id);
         await deleteDoc(bookDoc)
+    }
+
+    const filter = (e) => {
+        setSearch(e.target.value)
+        const temp = allbooks.filter(book => book.title.toLowerCase().includes(search.toLowerCase()) || book.author.toLowerCase().includes(search.toLowerCase()))
+        setFilteredBooks(temp)
+        console.log(temp)
     }
 
     useEffect(() => {
@@ -51,7 +61,8 @@ const Books = () => {
                 <input placeholder="Available" onChange={e => SetAvailable(e.target.value)} />
                 <button onClick={createBook}>Add book</button>
             </div> */}
-            <DisplayBooks allbooks={allbooks} />
+            <input placeholder='Search' onChange={e => filter(e)} />
+            <DisplayBooks allbooks={search !== '' ? filteredBooks : allbooks} />
         </div>
     );
 }
