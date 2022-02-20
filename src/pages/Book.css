@@ -25,3 +25,15 @@
     color: white;
     border-radius: 5px;
 }
+
+.search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-container input{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+}

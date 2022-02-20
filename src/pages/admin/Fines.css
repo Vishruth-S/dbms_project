@@ -1,0 +1,38 @@
+.fines-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.add-fines {
+    margin-top: 20px;
+}
+.issued-fines {
+    margin-top: 60px;
+}
+
+.issued-fines h3{
+    margin-bottom: 20px;
+}
+.fines-input {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.fines-button {
+    margin-top: 10px;
+    background: black;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.fines-temp1 {
+    margin-left: 18px;
+}
+
+.fines-temp2 {
+    margin-left: 10=5px;
+}

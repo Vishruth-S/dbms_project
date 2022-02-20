@@ -60,7 +60,9 @@ const ViewBooks = () => {
                 <input placeholder="Available" onChange={e => SetAvailable(e.target.value)} />
                 <button onClick={createBook}>Add book</button>
             </div> */}
-            <input placeholder='Search' onChange={e => filter(e)} />
+            <div className='search-container'>
+                <input placeholder='Search' onChange={e => filter(e)} />
+            </div>
             <DisplayBooks type="admin" allbooks={search !== '' ? filteredBooks : allbooks} />
         </div>
     );
