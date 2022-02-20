@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { db } from '../firebase-config'
-import { collection, getDocs, addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore"
+import { collection, getDocs, addDoc, doc, deleteDoc } from "firebase/firestore"
 import DisplayBooks from '../Components/DisplayBooks';
 import './Book.css'
 

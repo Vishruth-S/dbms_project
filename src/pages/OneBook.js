@@ -95,7 +95,7 @@ const OneBook = () => {
             <h1>Book details</h1>
             <div className='entireCard'>
                 <div className='cover'>
-                    <img src={book.img==null?"https://images-na.ssl-images-amazon.com/images/I/81Hf9W0uoxL.jpg":book.img} />
+                    <img src={book.img == null ? "https://images-na.ssl-images-amazon.com/images/I/81Hf9W0uoxL.jpg" : book.img} />
                 </div>
                 <div class="right">
                     <p>Title: <span>{book.title}</span></p>
@@ -104,6 +104,7 @@ const OneBook = () => {
                     {/* <p>Available- {book.available}</p> */}
                     {user && type === "admin" ?
                         <div className='onebook'>
+                            <p>Book id <span>{id}</span></p>
                             <p>Price: <span>{book.price}</span></p>
                             <p>ISBN: <span>{book.isbn}</span></p>
                             <p>Issued to: <span>{book.issuedTo && book.issuedTo.length > 0 ? book.issuedTo : <span>Not issued</span>}</span></p>
