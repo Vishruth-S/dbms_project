@@ -10,6 +10,7 @@ function AddBook() {
     const [genre, setGenre] = useState('')
     const [price, setPrice] = useState('')
     const [publisher, SetPublisher] = useState('')
+    const [cover, SetCover] = useState('')
     const [isbn, setIsbn] = useState('')
     const [allbooks, SetAllbooks] = useState([])
     const [allShelves, setAllShelves] = useState([])
@@ -27,6 +28,7 @@ function AddBook() {
             genre: genre,
             available: "yes",
             publisher: publisher,
+            cover:cover,
             price: price,
             isbn: isbn,
             shelf: shelf
@@ -91,6 +93,7 @@ function AddBook() {
                 <input placeholder="Author" onChange={e => setAuthor(e.target.value)} />
                 <input placeholder="Genre" onChange={e => setGenre(e.target.value)} />
                 <input placeholder="Price" onChange={e => setPrice(e.target.value)} />
+                <input placeholder="Cover" onChange={e => SetCover(e.target.value)} />
                 <input placeholder="Publisher" onChange={e => SetPublisher(e.target.value)} />
                 <input placeholder="ISBN" onChange={e => setIsbn(e.target.value)} />
                 <label>Choose a shelf:</label>
